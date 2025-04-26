@@ -1,0 +1,120 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+}
+
+window#waybar {
+    background-color: transparent;
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.module {
+    margin-top: 10px;
+    background-color: #000000;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+#window,
+#tray,
+#language,
+#network,
+#bluetooth,
+#battery {
+    background-color: transparent;
+}
+
+#bluetooth,
+#network,
+#battery {
+    font-size: 18px;
+    padding-left: 0px;
+}
+
+#window{
+    margin-left: 12px;
+}
+
+#cpu {
+    min-width: 50px;
+    margin-left: 0px;
+    padding-right: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#memory {
+    min-width: 100px;
+    margin-left: 0px;
+    padding-left: 0px;
+    margin-right: 10px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+#workspaces {
+    margin-right: 10px;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: #ffffff;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease-in-out;
+}
+
+#workspaces button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.5);
+}
+
+#workspaces button.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-bottom: 3px solid #ffffff;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+#workspaces button.empty {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#workspaces button.visible {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom: 3px solid rgba(255, 255, 255, 0.7);
+}
+
+#workspaces button.urgent {
+    background-color: rgba(245, 60, 60, 0.5);
+    border-bottom: 3px solid #f53c3c;
+    animation: urgent-pulse 1.5s infinite;
+}
+
+@keyframes urgent-pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+#clock{
+    min-width: 150px;
+}
+
+#battery {
+    margin-right: 15px;
+}
+
+@keyframes blink {
+    to {
+        background-color: #f53c3c;
+    }
+}
+
+#battery.critical:not(.charging) {
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}

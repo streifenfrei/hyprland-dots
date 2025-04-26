@@ -1,0 +1,114 @@
+// -*- mode: jsonc -*-
+{
+    "reload_style_on_change": true,
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 30, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": [
+        "hyprland/window"
+    ],
+    "modules-center": [
+        "cpu",
+        "memory",
+        "hyprland/workspaces",
+        "clock"
+    ],
+    "modules-right": [
+        "group/tray-group",
+        "network",
+        "bluetooth",
+        "battery"
+    ],
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": " {percentage}%   {swapPercentage}%",
+        "tooltip": false
+    },
+    "hyprland/workspaces": {
+        "persistent-workspaces": {
+            "*": 10
+        }
+    },
+    "clock": {
+        // "timezone": "Europe/Berlin",
+        "format": "<b>{:%H:%M</b> • %a, %d.%m}",
+        "tooltip": false
+    },
+    "group/tray-group": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-duration": 200,
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "hyprland/language",
+            "tray"
+        ]
+    },
+    "tray": {
+        // "icon-size": 21,
+        "spacing": 10,
+        "show-passive-items": true
+    },
+    "hyprland/language": {
+        "format": "{}",
+        "format-de": "de",
+        "format-us": "us"
+    },
+    "network": {
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "",
+        "format": "",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+        ],
+        "tooltip": false
+    },
+    "bluetooth": {
+        "format": " {status}",
+        "format-disabled": "",
+        "format-off": "",
+        "format-on": "",
+        "format-connected": "",
+        "format-no-controller": "",
+        "tooltip-format": "{controller_alias}\t{controller_address}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "battery": {
+        "states": {
+            "full": 95,
+            "6bar": 83,
+            "5bar": 71,
+            "4bar": 59,
+            "3bar": 47,
+            "2bar": 35,
+            "1bar": 23,
+            "critical": 15
+        },
+        
+        "format": "",
+        "format-full": "",
+        "format-6bar": "",
+        "format-5bar": "",
+        "format-4bar": "",
+        "format-3bar": "",
+        "format-2bar": "",
+        "format-1bar": "",
+        "format-critical": "",
+        "format-charging": "",
+        "format-plugged": "",
+        "interval": 3
+    }
+}
