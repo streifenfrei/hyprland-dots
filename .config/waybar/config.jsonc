@@ -73,7 +73,10 @@
             "",
             ""
         ],
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "Down: {bandwidthDown} • Up: {bandwidthUp}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n Down: {bandwidthDown} • Up: {bandwidthUp}",
+        "tooltip-format-disconnected": "Disconnected"
     },
     "bluetooth": {
         "format": " {status}",
@@ -82,7 +85,6 @@
         "format-on": "",
         "format-connected": "",
         "format-no-controller": "",
-        "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
     },
@@ -98,7 +100,7 @@
             "critical": 15
         },
         
-        "format": "",
+        "format": " ",
         "format-full": "",
         "format-6bar": "",
         "format-5bar": "",
@@ -107,8 +109,10 @@
         "format-2bar": "",
         "format-1bar": "",
         "format-critical": "",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "",
+        "format-plugged": "",
+        "tooltip": true,
+        "tooltip-format": "{capacity}%",
         "interval": 3
     }
 }
