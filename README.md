@@ -7,4 +7,5 @@ Dependencies:
 - bluez, overskride
 - proton-mail
 - jq
-- nodejs, npm, electron
+- grim slurp wf-recorder tofi libnotify
+- hyprnotify

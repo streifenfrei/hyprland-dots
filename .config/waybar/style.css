@@ -103,6 +103,7 @@ window#waybar {
 
 #battery {
     margin-right: 15px;
+    padding-right: 0px;
 }
 
 @keyframes blink {
