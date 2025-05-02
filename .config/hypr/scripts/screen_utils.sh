@@ -2,7 +2,7 @@
 
 # Simple Wayland screenshot & recording tool for Hyprland
 
-CHOICE=$(printf "Fullscreen Screenshot\n Region Screenshot\n Start Recording\n Stop Recording" | tofi --prompt "Select action:" --font /usr/share/fonts/gnu-free/FreeSans.otf)
+CHOICE=$(printf "Fullscreen Screenshot\nRegion Screenshot\nStart Recording\nStop Recording" | tofi --prompt "Select action:" --font /usr/share/fonts/gnu-free/FreeSans.otf)
 
 TIMESTAMP=$(date +%Y-%m-%d_%H-%M-%S)
 
