@@ -94,7 +94,8 @@
         "tooltip": true,
         "tooltip-format": "Down: {bandwidthDown} • Up: {bandwidthUp}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n Down: {bandwidthDown} • Up: {bandwidthUp}",
-        "tooltip-format-disconnected": "Disconnected"
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor"
     },
     "bluetooth": {
         "format": " {status}",
@@ -122,13 +123,13 @@
         "format-full": "",
         "format-6bar": "",
         "format-5bar": "",
-        "format-4bar": "",
+        "format-4bar": "",
         "format-3bar": "",
         "format-2bar": "",
         "format-1bar": "",
         "format-critical": "",
-        "format-charging": "",
-        "format-plugged": "",
+        "format-charging": "",
+        "format-plugged": "",
         "tooltip": true,
         "tooltip-format": "{capacity}%",
         "interval": 3

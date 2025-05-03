@@ -20,4 +20,8 @@ if [[ -n "$MATCH" ]]; then
 else
   # No window found, start the program
   "$PROGRAM" "$@" &
+  # Wait a bit for the window to appear
+  sleep 0.5
+  # Focus the window
+  hyprctl dispatch focuswindow "$WINCLASS"
 fi

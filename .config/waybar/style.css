@@ -1,6 +1,6 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: FontAwesome, Roboto, Helvetica, Arial, sans-serif, MaterialIcons;
     font-size: 15px;
 }
 
@@ -11,9 +11,14 @@ window#waybar {
     transition-duration: .5s;
 }
 
+tooltip {
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+}
+
 .module {
     margin-top: 10px;
-    background-color: #000000;
+    background-color: rgba(0, 0, 0, 0.6);
     border-radius: 10px;
     padding: 5px 10px;
 }
@@ -29,7 +34,7 @@ window#waybar {
 #bluetooth,
 #network,
 #battery {
-    font-size: 18px;
+    font-size: 20px;
     padding-left: 0px;
 }
 
@@ -81,7 +86,7 @@ window#waybar {
 }
 
 #workspaces button.visible {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.2);
     border-bottom: 3px solid rgba(255, 255, 255, 0.7);
 }
 
