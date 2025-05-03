@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # Usage: start_or_focus.sh <program> <window_class> [args...]
 
