@@ -1,7 +1,7 @@
 * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Roboto, Helvetica, Arial, sans-serif, MaterialIcons;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 window#waybar {
@@ -36,7 +36,7 @@ tooltip {
 #network,
 #pulseaudio,
 #battery {
-    font-size: 20px;
+    font-size: 22px;
     padding-left: 0px;
 }
 

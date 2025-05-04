@@ -11,3 +11,4 @@ Dependencies:
 - hyprnotify
 - pamixer
 - pinentry
+- swayosd
