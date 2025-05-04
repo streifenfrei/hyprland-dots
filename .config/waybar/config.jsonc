@@ -17,6 +17,7 @@
     ],
     "modules-right": [
         "group/tray-group",
+        "pulseaudio",
         "network",
         "bluetooth",
         "battery"
@@ -38,24 +39,24 @@
         "format": "<b>{:%H:%M</b> • %a, %d.%m}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
-                    "mode"          : "month",
-                    "weeks-pos"     : "right",
-                    "on-scroll"     : 1,
-                    "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weeks":      "<span color='#99ffdd'><b>W{:%U}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                              }
-                    },
-        "actions":  {
-                    "on-click": "shift_up",
-                    "on-click-middle": "shift_reset",
-                    "on-click-right": "shift_down",
-                    "on-scroll-up": "shift_up",
-                    "on-scroll-down": "shift_down"
-                    }
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{:%U}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click": "shift_up",
+            "on-click-middle": "shift_reset",
+            "on-click-right": "shift_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "group/tray-group": {
         "orientation": "inherit",
@@ -78,60 +79,68 @@
         "format-de-neo": "neo",
         "format-de": "de"
     },
-    "network": {
-        "format-wifi": "{icon}",
-        "format-ethernet": "",
-        "format-linked": "",
-        "format-disconnected": "",
-        "format": "",
-        "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
-        ],
-        "tooltip": true,
-        "tooltip-format": "Down: {bandwidthDown} • Up: {bandwidthUp}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n Down: {bandwidthDown} • Up: {bandwidthUp}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor"
-    },
-    "bluetooth": {
-        "format": " {status}",
-        "format-disabled": "",
-        "format-off": "",
-        "format-on": "",
-        "format-connected": "",
-        "format-no-controller": "",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
-    },
-    "battery": {
-        "states": {
-            "full": 95,
-            "6bar": 83,
-            "5bar": 71,
-            "4bar": 59,
-            "3bar": 47,
-            "2bar": 35,
-            "1bar": 23,
-            "critical": 15
+    "pulseaudio": {
+        "format": "{icon}",
+        "format-muted": "",
+        "format-icons": {
+            "default": ["", ""]
         },
-        
-        "format": "",
-        "format-full": "",
-        "format-6bar": "",
-        "format-5bar": "",
-        "format-4bar": "",
-        "format-3bar": "",
-        "format-2bar": "",
-        "format-1bar": "",
-        "format-critical": "",
-        "format-charging": "",
-        "format-plugged": "",
         "tooltip": true,
-        "tooltip-format": "{capacity}%",
-        "interval": 3
+        "tooltip-format": "{volume}%"
+    },
+    "network": {
+            "format-wifi": "{icon}",
+            "format-ethernet": "",
+            "format-linked": "",
+            "format-disconnected": "",
+            "format": "",
+            "format-icons": [
+                "",
+                "",
+                "",
+                "",
+                ""
+            ],
+            "tooltip": true,
+            "tooltip-format": "Down: {bandwidthDown} • Up: {bandwidthUp}",
+            "tooltip-format-wifi": "{essid} ({signalStrength}%)\n Down: {bandwidthDown} • Up: {bandwidthUp}",
+            "tooltip-format-disconnected": "Disconnected",
+            "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor"
+        },
+        "bluetooth": {
+            "format": " {status}",
+            "format-disabled": "",
+            "format-off": "",
+            "format-on": "",
+            "format-connected": "",
+            "format-no-controller": "",
+            "tooltip-format-connected": "{device_enumerate}",
+            "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        },
+        "battery": {
+            "states": {
+                "full": 95,
+                "6bar": 83,
+                "5bar": 71,
+                "4bar": 59,
+                "3bar": 47,
+                "2bar": 35,
+                "1bar": 23,
+                "critical": 15
+            },
+            "format": "",
+            "format-full": "",
+            "format-6bar": "",
+            "format-5bar": "",
+            "format-4bar": "",
+            "format-3bar": "",
+            "format-2bar": "",
+            "format-1bar": "",
+            "format-critical": "",
+            "format-charging": "",
+            "format-plugged": "",
+            "tooltip": true,
+            "tooltip-format": "{capacity}%",
+            "interval": 3
+        }
     }
-}

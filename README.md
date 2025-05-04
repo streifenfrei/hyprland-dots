@@ -4,8 +4,10 @@ Dependencies:
 - awesome-fonts
 - material-icons
 - dconf 
-- bluez, overskride
+- bluez, bluetoothctl
 - proton-mail
 - jq
 - grim slurp wf-recorder tofi libnotify
 - hyprnotify
+- pamixer
+- pinentry
