@@ -215,7 +215,7 @@ GETPIN" | pinentry | grep "D " | cut -d' ' -f2-)
             ;;
 
         "Edit Connections")
-            nm-connection-editor &
+            ~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor &
             break
             ;;
 
