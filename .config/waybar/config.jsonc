@@ -86,8 +86,8 @@
     "network": {
             "format-wifi": "{icon}",
             "format-ethernet": "",
-            "format-linked": "",
-            "format-disconnected": "",
+            "format-linked": "",
+            "format-disconnected": "",
             "format": "",
             "format-icons": [
                 "",
