@@ -55,7 +55,7 @@ format_wifi_networks() {
         signal="${signal}%"
         # Format security
         if [ -n "$security" ]; then
-            security="🔒"
+            security="*"
         else
             security=""
         fi
@@ -180,8 +180,8 @@ while true; do
                         nmcli connection down "$SSID"
                         notify-send "Network" "Disconnected from $SSID"
                     else
-                        # Check if network is secured (has 🔒)
-                        if [[ "$WIFI_CHOICE" == *"🔒"* ]]; then
+                        # Check if network is secured (has *)
+                        if [[ "$WIFI_CHOICE" == *"*"* ]]; then
                             # Get password using pinentry
                             PASSWORD=$(echo "SETTITLE WiFi Password
 SETDESC Enter password for $SSID
