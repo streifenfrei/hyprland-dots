@@ -12,3 +12,4 @@ Dependencies:
 - pamixer
 - pinentry
 - swayosd
+- cliphist
