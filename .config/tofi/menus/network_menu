@@ -20,6 +20,15 @@ get_wwan_status() {
     fi
 }
 
+# Function to get proxy status
+get_proxy_status() {
+    if grep -q "# START_PROXY_SETTINGS" "$HOME/.bashrc"; then
+        echo "ON"
+    else
+        echo "OFF"
+    fi
+}
+
 # Function to get wifi networks
 get_wifi_networks() {
     nmcli -t -f SSID,SIGNAL,SECURITY device wifi list
@@ -84,8 +93,11 @@ while true; do
     # Get current wwan state
     WWAN_STATE=$(get_wwan_status)
 
+    # Get current proxy state
+    PROXY_STATE=$(get_proxy_status)
+
     # Show main menu options
-    CHOICE=$(show_menu "Network Control" "Ethernet\nWiFi\nWWAN: $WWAN_STATE\nEdit Connections")
+    CHOICE=$(show_menu "Network Control" "Ethernet\nWiFi\nWWAN: $WWAN_STATE\nProxy: $PROXY_STATE\nEdit Connections")
 
     # If no choice was made (ESC pressed), exit the script
     if [ -z "$CHOICE" ]; then
@@ -212,6 +224,10 @@ GETPIN" | pinentry | grep "D " | cut -d' ' -f2-)
                 nmcli radio wwan on
                 notify-send "Network" "WWAN turned on"
             fi
+            ;;
+
+        "Proxy: ON"|"Proxy: OFF")
+            ~/.config/hypr/scripts/toggle_proxy.sh
             ;;
 
         "Edit Connections")
