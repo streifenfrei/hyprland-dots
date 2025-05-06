@@ -24,12 +24,11 @@ case "$CHOICE" in
 
   "Start Recording")
     pkill wf-recorder 2>/dev/null
-    notify-send "Recording started..." "Saving to ~/Videos/Recording_$TIMESTAMP.mp4"
-    wf-recorder -f "$HOME/Videos/Recording_$TIMESTAMP.mp4" &
+    wf-recorder -f "$HOME/Videos/Recording_$TIMESTAMP.mp4" & pkill --signal 35 waybar
     ;;
 
   "Stop Recording")
-    pkill wf-recorder && notify-send "Recording stopped"
+    pkill wf-recorder && pkill --signal 35 waybar
     ;;
 
   *)
