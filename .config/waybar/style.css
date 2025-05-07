@@ -12,16 +12,17 @@ window#waybar {
 }
 
 tooltip {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: #F6EEE8;
     border-radius: 10px;
     color: #2c2c2c;
 }
 
 .module {
     margin-top: 10px;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #F6EEE8;
     border-radius: 10px;
-    padding: 5px 10px;
+    border: 0px solid #aaaaaa;
+    padding: 0px 10px;
 }
 #window,
 #custom-recording,
@@ -31,7 +32,10 @@ tooltip {
 #network,
 #bluetooth,
 #battery {
+    margin-top: 0px;
+    padding-top: 0px;
     background-color: transparent;
+    border: none;
 }
 
 #bluetooth,
@@ -47,33 +51,38 @@ tooltip {
 }
 
 #cpu {
-    min-width: 50px;
-    margin-left: 0px;
+    min-width: 60px;
+    margin-left: 23px;
     padding-right: 5px;
+    padding-top: 3px;
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
+    border-right: none;
 }
 #memory {
     min-width: 100px;
     margin-left: 0px;
     padding-left: 0px;
+    padding-top: 3px;
     margin-right: 10px;
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
+    border-left: none;
 }
 
 #workspaces {
     margin-right: 10px;
+    padding: 5px
 }
 
 #workspaces button {
-    padding: 0 5px ;
+    padding: 3px 5px 0 5px;
     background-color: transparent;
     color: #2c2c2c;
 }
 
 #workspaces button.active {
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.empty {
@@ -96,7 +105,9 @@ tooltip {
 }
 
 #clock{
-    min-width: 150px;
+    min-width: 180px;
+    padding-top: 5px;
+    font-size: 18px;
 }
 
 @keyframes recording-pulse {
