@@ -29,6 +29,7 @@ case "$CHOICE" in
 
   "Stop Recording")
     pkill wf-recorder && pkill --signal 35 waybar
+    notify-send "Recording saved" "$HOME/Videos/Recording_$TIMESTAMP.mp4"
     ;;
 
   *)
