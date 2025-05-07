@@ -15,6 +15,7 @@ tooltip {
     background-color: #F6EEE8;
     border-radius: 10px;
     color: #2c2c2c;
+    text-shadow: none;
 }
 
 .module {
