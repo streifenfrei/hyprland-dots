@@ -5,29 +5,49 @@
 # Function to filter out devices with only MAC addresses in the name
 get_named_devices() {
     local filter="$1"
+    local devices
     if [ -n "$filter" ]; then
-        bluetoothctl devices "$filter" | awk '{if ($3 !~ /^[0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f]$/) print $0}'
+        devices=$(bluetoothctl devices "$filter")
     else
-        bluetoothctl devices | awk '{if ($3 !~ /^[0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f][:-][0-9A-Fa-f][0-9A-Fa-f]$/) print $0}'
+        devices=$(bluetoothctl devices)
     fi
+
+    while read -r _ MAC NAME; do
+        INFO=$(bluetoothctl info "$MAC")
+        
+        # Normalize MAC format to hyphenated version (uppercase)
+        MAC_HYPHEN=$(echo "$MAC" | tr ':' '-' | tr 'a-f' 'A-F')
+        
+        # Get device class
+        CLASS=$(echo "$INFO" | grep 'Class:' | awk '{print $2}')
+        
+        # Filter UUIDs, ignore generic or useless BLE ones
+        UUIDS=$(echo "$INFO" | grep 'UUID' | grep -v -i 'Generic\|Battery')
+        
+        # Only output if name is not a MAC address and device has class or UUIDs
+        if [[ "$NAME" != "$MAC_HYPHEN" ]] && ([[ -n "$CLASS" ]] || [[ -n "$UUIDS" ]]); then
+            echo "$MAC $NAME"
+        fi
+    done <<< "$devices"
 }
 
 # Function to extract device name from a line
 get_device_name() {
     local devices="$1"
     while IFS= read -r line; do
-        echo "$line" | awk '{for(i=3;i<=NF;i++) printf "%s ", $i; print ""}'
+        # Print everything after the MAC address
+        echo "$line" | sed 's/^[0-9A-Fa-f:]\+\s\+//'
     done <<< "$devices"
 }
 
 # Function to extract MAC address from a line matching a name
 get_mac_from_name() {
     local devices="$1"
-    local name="$2"
-    while IFS= read -r line; do
-        local full_name=$(echo "$line" | awk '{for(i=3;i<=NF;i++) printf "%s ", $i; print ""}' | sed 's/ $//')
-        if [ "$full_name" = "$name" ]; then
-            echo "$line" | awk '{print $2}'
+    local target_name="$2"
+
+    while read -r MAC name; do
+        if [[ "$target_name" == "$name" ]]; then
+            echo "$MAC"
             return
         fi
     done <<< "$devices"
@@ -143,12 +163,18 @@ while true; do
                             continue 2
                             ;;
                         "Connect")
-                            bluetoothctl connect "$MAC"
-                            notify-send "Bluetooth" "Connecting to $SELECTED_NAME"
+                            ERROR_MSG=$(bluetoothctl connect "$MAC" 2>&1)
+                            # Wait a moment for the connection to establish
+                            sleep 2
+                            if bluetoothctl info "$MAC" | grep -q "Connected: yes"; then
+                                notify-send "Bluetooth" "Connected to $SELECTED_NAME"
+                            else
+                                notify-send "Bluetooth" "Failed to connect to $MAC\n$ERROR_MSG" -u critical
+                            fi
                             continue 2
                             ;;
                         "Info")
-                            INFO=$(bluetoothctl info "$MAC")
+                            INFO=$(bluetoothctl info "$MAC")vi
                             notify-send "Bluetooth Device Info" "$INFO"
                             ;;
                     esac
