@@ -1,97 +1,94 @@
 * {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: Roboto, Helvetica, Arial, sans-serif, MaterialIcons;
-    font-size: 17px;
+    font-family: "CodeNewRoman Nerd Font Propo";
+    font-size: 13px;
 }
 
 window#waybar {
-    background-color: transparent;
-    color: #2c2c2c;
-    transition-property: background-color;
-    transition-duration: .5s;
+    all:unset;
+    color: black;
 }
 
 tooltip {
-    background-color: #F6EEE8;
-    border-radius: 10px;
+    background-color: rgba(255,255,255,0.9);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+tooltip label {
     color: #2c2c2c;
     text-shadow: none;
 }
 
-.module {
-    margin-top: 10px;
-    background-color: #F6EEE8;
-    border-radius: 10px;
-    border: 0px solid #aaaaaa;
-    padding: 0px 10px;
+.modules {
+    background: transparent;
 }
-#window,
-#custom-recording,
-#tray,
-#language,
+
+.modules-left {
+    margin-left: 10px;
+}
+
+.modules-center {
+    padding:2px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius:35px;
+    background: rgba(255,255,255,0.25);
+}
+
+#language{
+    font-weight: bold;
+    padding-left: 10px;
+}
+
 #pulseaudio,
 #network,
 #bluetooth,
 #battery {
-    margin-top: 0px;
-    padding-top: 0px;
-    background-color: transparent;
-    border: none;
+    font-size: 18px;
+    padding-left: 10px;
 }
 
-#bluetooth,
-#network,
-#pulseaudio,
-#battery {
-    font-size: 22px;
-    padding-left: 0px;
+#resources {
+    min-width: 170px;
+    margin-left: 30px;
+    margin-right: 0px;
 }
 
-#window{
-    margin-left: 12px;
-}
 
 #cpu {
-    min-width: 60px;
-    margin-left: 23px;
-    padding-right: 5px;
-    padding-top: 3px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    border-right: none;
-}
-#memory {
-    min-width: 100px;
-    margin-left: 0px;
+    margin-right: 15px;
+    padding-right: 0px;
     padding-left: 0px;
-    padding-top: 3px;
-    margin-right: 10px;
-    border-top-left-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-left: none;
+    padding-top: 0px;
+}
+
+#memory {
+    padding-left: 0px;
+    padding-top: 0px;
 }
 
 #workspaces {
+    margin-left: 0px;
     margin-right: 10px;
-    padding: 5px
 }
 
 #workspaces button {
-    padding: 3px 5px 0 5px;
-    background-color: transparent;
-    color: #2c2c2c;
-}
-
-#workspaces button.active {
-    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+    min-height: 10px;
+    min-width: 25px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-left: 2px;
+    padding: 0px 0px 0px 0px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.15);
 }
 
 #workspaces button.empty {
-    color: rgba(0, 0, 0, 0.3);
+    background-color: transparent;
 }
 
 #workspaces button.visible {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 @keyframes urgent-pulse {
@@ -106,20 +103,8 @@ tooltip {
 }
 
 #clock{
-    min-width: 180px;
-    padding-top: 5px;
-    font-size: 18px;
-}
-
-@keyframes recording-pulse {
-    50% { opacity: 0.6; }
-    100% { opacity: 1; }
-}
-
-#custom-recording {
-    color: #e53935;
-    font-size: 20px;
-    animation: recording-pulse 1.5s infinite;
+    min-width: 170px;
+    margin-right: 30px;
 }
 
 #battery {
@@ -129,7 +114,7 @@ tooltip {
 
 @keyframes blink {
     to {
-        background-color: #e53935;
+        color: #e53935;
     }
 }
 

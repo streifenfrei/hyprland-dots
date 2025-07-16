@@ -1,17 +1,13 @@
 // -*- mode: jsonc -*-
 {
+    "layer": "top",
+    "position": "top",
     "reload_style_on_change": true,
-    // "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
     "modules-left": [
         "hyprland/window"
     ],
     "modules-center": [
-        "cpu",
-        "memory",
+        "group/resources",
         "hyprland/workspaces",
         "clock"
     ],
@@ -23,21 +19,29 @@
         "bluetooth",
         "battery"
     ],
+    "group/resources": {
+        "orientation":"inherit",
+        "modules": [
+            "cpu",
+            "memory"
+        ]
+    },
     "cpu": {
-        "format": " {usage}%",
+        "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {percentage}%   {swapPercentage}%",
+        "format": " {percentage}%   {swapPercentage}%",
         "tooltip": false
     },
     "hyprland/workspaces": {
+        "format": "",
         "persistent-workspaces": {
-            "*": 10
+            "*": 5
         }
     },
     "clock": {
-        "format": "<b>{:%H:%M</b> • %a, %d.%m}",
+        "format": "<b>{:%H:%M</b> • %a, %b %d}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
@@ -46,8 +50,8 @@
             "format": {
                 "months": "<span color='#000000'><b>{}</b></span>",
                 "days": "<span color='#555555'><b>{}</b></span>",
-                "weeks": "<span color='#fce803ee'><b>W{:%U}</b></span>",
-                "weekdays": "<span color='#fc9003ee'><b>{}</b></span>",
+                "weeks": "<span color='#fc9003ee'><b>W{:%U}</b></span>",
+                "weekdays": "<span color='#3300b3'><b>{}</b></span>",
                 "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
         },
@@ -77,7 +81,6 @@
         ]
     },
     "tray": {
-        // "icon-size": 21,
         "spacing": 10,
         "show-passive-items": true
     },
@@ -87,34 +90,37 @@
         "format-de": "de"
     },
     "pulseaudio": {
-        "format": "",
-        "format-muted": "",
+        "format": "{icon}",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+        "format-muted": "",
+        "tooltip": false
     },
     "network": {
         "format-wifi": "{icon}",
-        "format-ethernet": "",
-        "format-linked": "",
-        "format-disconnected": "",
+        "format-ethernet": "󰈀",
+        "format-linked": "",
+        "format-disconnected": "",
         "format": "",
         "format-icons": [
-            "",
-            "",
-            "",
-            "",
-            ""
+            "󰤯",
+            "󰤟",
+            "󰤢",
+            "󰤥",
+            "󰤨"
         ],
-        "tooltip": true,
-        "tooltip-format": "Down: {bandwidthDown} • Up: {bandwidthUp}",
-        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n Down: {bandwidthDown} • Up: {bandwidthUp}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor"
+        "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor",
+        "tooltip": false
     },
     "bluetooth": {
-        "format": " {status}",
+        "format": "󰂯 {status}",
         "format-disabled": "",
-        "format-off": "",
-        "format-on": "",
-        "format-connected": "",
+        "format-off": "󰂲",
+        "format-on": "󰂯",
+        "format-connected": "󰂱",
         "format-no-controller": "",
         "tooltip-format-connected": "{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
@@ -122,27 +128,32 @@
     "battery": {
         "states": {
             "full": 95,
-            "6bar": 83,
-            "5bar": 71,
-            "4bar": 59,
-            "3bar": 47,
-            "2bar": 35,
-            "1bar": 23,
+            "9bar": 86,
+            "8bar": 78,
+            "7bar": 70,
+            "6bar": 62,
+            "5bar": 54,
+            "4bar": 46,
+            "3bar": 38,
+            "2bar": 30,
+            "1bar": 22,
             "critical": 15
         },
-        "format": "",
-        "format-full": "",
-        "format-6bar": "",
-        "format-5bar": "",
-        "format-4bar": "",
-        "format-3bar": "",
-        "format-2bar": "",
-        "format-1bar": "",
-        "format-critical": "",
-        "format-charging": "",
-        "format-plugged": "",
-        "tooltip": true,
-        "tooltip-format": "{capacity}%",
+        "format": "󰁹",
+        "format-full": "󰁹",
+        "format-9bar": "󰂂",
+        "format-8bar": "󰂁",
+        "format-7bar": "󰂀",
+        "format-6bar": "󰁿",
+        "format-5bar": "󰁾",
+        "format-4bar": "󰁽",
+        "format-3bar": "󰁼",
+        "format-2bar": "󰁻",
+        "format-1bar": "󰁺",
+        "format-critical": "󰂃",
+        "format-charging": "󰂄",
+        "format-plugged": "󰂄",
+        "tooltip": false,
         "interval": 3
     }
 }
