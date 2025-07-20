@@ -4,41 +4,30 @@
     "position": "top",
     "reload_style_on_change": true,
     "modules-left": [
-        "hyprland/window"
+        "hyprland/workspaces",
     ],
     "modules-center": [
-        "group/resources",
-        "hyprland/workspaces",
-        "clock"
+        "clock",
     ],
     "modules-right": [
-        "custom/recording",
         "group/tray-group",
-        "pulseaudio",
+        "cpu",
+        "memory",
         "network",
         "bluetooth",
+        "pulseaudio",
         "battery"
     ],
-    "group/resources": {
-        "orientation":"inherit",
-        "modules": [
-            "cpu",
-            "memory"
-        ]
-    },
     "cpu": {
         "format": " {usage}%",
         "tooltip": false
     },
     "memory": {
-        "format": " {percentage}%   {swapPercentage}%",
+        "format": " {percentage}%",
         "tooltip": false
     },
     "hyprland/workspaces": {
-        "format": "",
-        "persistent-workspaces": {
-            "*": 5
-        }
+        "format": "{name}"
     },
     "clock": {
         "format": "<b>{:%H:%M</b> • %a, %b %d}",
@@ -63,12 +52,6 @@
             "on-scroll-down": "shift_down"
         }
     },
-    "custom/recording": {
-        "exec": "~/.config/hypr/scripts/is_recording.sh",
-        "interval": "once",
-        "signal": 1,
-        "on-click": "pkill wf-recorder && pkill --signal 35 waybar"
-    },
     "group/tray-group": {
         "orientation": "inherit",
         "drawer": {
@@ -85,26 +68,16 @@
         "show-passive-items": true
     },
     "hyprland/language": {
-        "format": "{}",
+        "format": "<b>{}</b>",
         "format-de-neo": "neo",
         "format-de": "de"
     },
-    "pulseaudio": {
-        "format": "{icon}",
-        "format-icons": [
-            "",
-            "",
-            ""
-        ],
-        "format-muted": "",
-        "tooltip": false
-    },
     "network": {
+        "format": "󰈀",
         "format-wifi": "{icon}",
         "format-ethernet": "󰈀",
         "format-linked": "",
         "format-disconnected": "",
-        "format": "",
         "format-icons": [
             "󰤯",
             "󰤟",
@@ -113,7 +86,10 @@
             "󰤨"
         ],
         "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor",
-        "tooltip": false
+        "tooltip": true,
+        "tooltip-format": "{ifname}: {ipaddr} \nDown:{bandwidthDownBytes} Up:{bandwidthUpBytes}",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr} \nDown:{bandwidthDownBytes} Up:{bandwidthUpBytes}",
+        "tooltip-format-wifi": "{ifname}: {ipaddr} \nSSID: {essid}\nDown:{bandwidthDownBytes} Up:{bandwidthUpBytes}"
     },
     "bluetooth": {
         "format": "󰂯 {status}",
@@ -122,8 +98,18 @@
         "format-on": "󰂯",
         "format-connected": "󰂱",
         "format-no-controller": "",
-        "tooltip-format-connected": "{device_enumerate}",
-        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+        "tooltip": true,
+        "tooltip-format-connected": "{device_alias} ({device_address})"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-icons": [
+            "",
+            "",
+            ""
+        ],
+        "format-muted": " - ",
+        "tooltip": false
     },
     "battery": {
         "states": {
@@ -139,21 +125,22 @@
             "1bar": 22,
             "critical": 15
         },
-        "format": "󰁹",
-        "format-full": "󰁹",
-        "format-9bar": "󰂂",
-        "format-8bar": "󰂁",
-        "format-7bar": "󰂀",
-        "format-6bar": "󰁿",
-        "format-5bar": "󰁾",
-        "format-4bar": "󰁽",
-        "format-3bar": "󰁼",
-        "format-2bar": "󰁻",
-        "format-1bar": "󰁺",
-        "format-critical": "󰂃",
-        "format-charging": "󰂄",
-        "format-plugged": "󰂄",
-        "tooltip": false,
-        "interval": 3
+        "format": "󰁹 {capacity}%",
+        "format-full": "󰁹 {capacity}%",
+        "format-9bar": "󰂂 {capacity}%",
+        "format-8bar": "󰂁 {capacity}%",
+        "format-7bar": "󰂀 {capacity}%",
+        "format-6bar": "󰁿 {capacity}%",
+        "format-5bar": "󰁾 {capacity}%",
+        "format-4bar": "󰁽 {capacity}%",
+        "format-3bar": "󰁼 {capacity}%",
+        "format-2bar": "󰁻 {capacity}%",
+        "format-1bar": "󰁺 {capacity}%",
+        "format-critical": "󰂃 {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰂄 {capacity}%",
+        "interval": 3,
+        "tooltip": true,
+        "tooltip-format": "{time}"
     }
 }

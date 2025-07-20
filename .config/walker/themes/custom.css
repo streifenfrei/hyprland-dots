@@ -1,5 +1,5 @@
 @define-color foreground rgba(0, 0, 0, 0.8);
-@define-color background rgba(255, 255, 255, 0.90);
+@define-color background rgba(255, 255, 255, 0.5);
 @define-color color1 rgba(0, 0, 0, 1);
 
 #window,
@@ -33,16 +33,14 @@ slider,
 }
 
 #window {
-  color: @foreground;
+  color: @foreground;    
 }
 
 #box {
   border-radius: 4px;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.3), 0 1px 3px 1px rgba(0, 0, 0, 0.7), 0 2px 6px 2px rgba(0, 0, 0, 0.3);
   background: @background;
   padding: 32px;
-  box-shadow:
-    0 10px 19px rgba(0, 0, 0, 0.3),
-    0 8px 6px rgba(0, 0, 0, 0.22);
 }
 
 #search {
