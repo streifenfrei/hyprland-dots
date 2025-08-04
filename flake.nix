@@ -20,8 +20,6 @@
         waybar
         foot
         swaynotificationcenter
-        
-        # Add any other Hyprland-related packages here
       ];
     };
   };
