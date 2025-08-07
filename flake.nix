@@ -9,17 +9,18 @@
     nixosModules.hyprland-packages = { config, pkgs, ... }: {
       environment.systemPackages = with pkgs; [
         # Hyprland core
-        hyprland
         hyprpaper
         hyprlock
         hypridle
         
         # Hyprland-related tools
+        avizo
+        foot
         nautilus
+        nm-connection-editor
+        swaynotificationcenter
         walker
         waybar
-        foot
-        swaynotificationcenter
       ];
     };
   };
