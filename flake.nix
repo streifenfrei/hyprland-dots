@@ -17,7 +17,7 @@
         avizo
         foot
         nautilus
-        nm-connection-editor
+        networkmanagerapplet
         swaynotificationcenter
         walker
         waybar
