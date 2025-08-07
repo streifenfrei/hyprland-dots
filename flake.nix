@@ -1,3 +1,8 @@
+let 
+  swayosd_patched = pkgs.swayosd.overrideAttrs (old: {
+    patches = (old.patches or []) ++ [ ./patches/swayosd.patch ];
+  });
+in
 {
   description = "Hyprland dotfiles and packages";
 
@@ -14,11 +19,11 @@
         hypridle
         
         # Hyprland-related tools
-        avizo
         foot
         nautilus
         networkmanagerapplet
         swaynotificationcenter
+        swayosd_patched
         walker
         waybar
       ];

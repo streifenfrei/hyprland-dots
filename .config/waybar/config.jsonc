@@ -85,7 +85,7 @@
             "󰤥",
             "󰤨"
         ],
-        "on-click": "~/.config/hypr/scripts/start_or_focus.sh nm-connection-editor nm-connection-editor",
+        "on-click": "nm-connection-editor",
         "tooltip": true,
         "tooltip-format": "{ifname}: {ipaddr} \nDown:{bandwidthDownBytes} Up:{bandwidthUpBytes}",
         "tooltip-format-ethernet": "{ifname}: {ipaddr} \nDown:{bandwidthDownBytes} Up:{bandwidthUpBytes}",
