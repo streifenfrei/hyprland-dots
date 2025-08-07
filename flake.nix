@@ -24,6 +24,7 @@ in
         networkmanagerapplet
         swaynotificationcenter
         swayosd_patched
+        thunderbird
         walker
         waybar
       ];
