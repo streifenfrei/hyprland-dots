@@ -24,7 +24,7 @@
         networkmanagerapplet
         swaynotificationcenter
         swayosd_patched
-        thunderbird
+        protonmail-desktop
         walker
         waybar
       ];
