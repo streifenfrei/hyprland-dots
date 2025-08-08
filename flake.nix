@@ -24,7 +24,7 @@
         networkmanagerapplet
         swaynotificationcenter
         swayosd_patched
-        protonmail-desktop
+        electron-mail
         walker
         waybar
       ];
