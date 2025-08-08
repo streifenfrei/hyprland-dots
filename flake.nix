@@ -19,6 +19,7 @@
         hyprshot
         
         # Hyprland-related tools
+        brightnessctl
         foot
         nautilus
         networkmanagerapplet
