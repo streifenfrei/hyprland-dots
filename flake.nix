@@ -13,9 +13,10 @@
     nixosModules.hyprland-packages = { config, pkgs, ... }: {
       environment.systemPackages = with pkgs; [
         # Hyprland core
-        hyprpaper
-        hyprlock
         hypridle
+        hyprlock
+        hyprpaper
+        hyprshot
         
         # Hyprland-related tools
         foot
