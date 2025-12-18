@@ -16,6 +16,7 @@
         hypridle
         hyprlock
         hyprpaper
+        hyprpolkitagent
         hyprshot
         
         # Hyprland-related tools
