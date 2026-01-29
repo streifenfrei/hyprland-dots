@@ -1,35 +1,33 @@
 {
-  description = "Hyprland dotfiles and packages";
+  description = "hyprland config flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  };
-
-  outputs = { self, nixpkgs, ... }: let
-    swayosd_patched = nixpkgs.legacyPackages.x86_64-linux.swayosd.overrideAttrs (old: {
-      patches = (old.patches or []) ++ [ ./patches/swayosd.patch ];
-    });
-  in {
-    nixosModules.hyprland-packages = { config, pkgs, ... }: {
-      environment.systemPackages = with pkgs; [
-        # Hyprland core
-        hypridle
-        hyprlock
-        hyprpaper
-        hyprpolkitagent
-        hyprshot
-        
-        # Hyprland-related tools
-        brightnessctl
-        foot
-        nautilus
-        networkmanagerapplet
-        swaynotificationcenter
-        swayosd_patched
-        protonmail-desktop
-        walker
-        waybar
-      ];
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
+
+  outputs = { nixpkgs, home-manager, nixgl, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs = import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+        overlays = [ nixgl.overlay ];
+      };
+    in
+    {
+      homeConfigurations."dave" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [
+          ./home/home.nix
+        ];
+      };
+    };
 }

@@ -10,7 +10,7 @@ v_align = "fill"
 
 [ui.window.box]
 h_align = "center"
-width = 450 
+width = 450
 
 [ui.window.box.bar]
 orientation = "horizontal"

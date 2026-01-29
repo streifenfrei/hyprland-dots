@@ -1,8 +1,0 @@
-diff -ruN SwayOSD/data/config/backend.toml SwayOSD_patched/data/config/backend.toml
---- SwayOSD/data/config/backend.toml	2025-08-07 20:52:43.111970700 +0200
-+++ SwayOSD_patched/data/config/backend.toml	2025-08-07 20:53:27.871296079 +0200
-@@ -1,3 +1,3 @@
- [input]
- ## completely ignore the caps lock key (useful if it's rebound to something else like escape)
--# ignore_caps_lock_key = false
-+ignore_caps_lock_key = true
